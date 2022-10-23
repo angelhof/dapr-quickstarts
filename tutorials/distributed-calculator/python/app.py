@@ -27,7 +27,7 @@ CORS(app)
 def multiply():
     content = request.json
     [operand_one, operand_two] = [float(content['operandOne']), float(content['operandTwo'])]
-    print(f"Calculating {operand_one} * {operand_two}", flush=True)
+    print(f"Worker pid: {os.getpid()} Calculating {operand_one} * {operand_two}", flush=True)
     return jsonify(math.ceil(operand_one * operand_two * 100000)/100000)
 
-app.run(host="0.0.0.0",port=appPort)
+# app.run(host="0.0.0.0",port=appPort)
