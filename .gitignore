@@ -1,3 +1,5 @@
+vars.sh
+
 # General
 .env
 *.suo
