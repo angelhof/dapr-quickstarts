@@ -13,6 +13,7 @@
 
 from app import User
 
+import json
 import logging
 from typing import Union
 
@@ -47,8 +48,14 @@ def book(reservation: Reservation):
                                     content_type="application/json")
             # data: Union[bytes, str, GrpcMessage] = '',
             # content_type: Optional[str] = None,
-
-    return resp.data
+        ## TODO: This load here is unnecessary (since we will
+        ##       need to reserialize it here). Can we just return the string?
+        ##       
+        ##       FastAPI has type for request (and does auto encode/decode)
+        ##       but not for response!
+        json_resp = json.loads(resp.data)
+        logging.info('Data returned: ' + str(resp.data))
+    return json_resp
 
 
 
