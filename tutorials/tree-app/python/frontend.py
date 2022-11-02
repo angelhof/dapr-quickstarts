@@ -23,14 +23,6 @@ class Reservation(BaseModel):
 DAPR_STORE_NAME = "statestore"
 logging.basicConfig(level = logging.INFO)
 
-
-import io
-import sys
-import builtins
-import traceback
-from functools import wraps
-
-
 @app.post("/book")
 async def book(reservation: Reservation):
     ## TODO: Can we not restart the client on every request?
