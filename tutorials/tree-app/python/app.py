@@ -20,11 +20,11 @@ logging.basicConfig(level = logging.INFO)
 
 
 @app.get("/")
-def read_root():
+async def read_root():
     return {"Hello": "World"}
 
 @app.post("/book_hotel/{hotel_id}")
-def read_item(hotel_id: int, user: User):
+async def read_item(hotel_id: int, user: User):
     ## TODO: Can we not restart the client on every request?
     with DaprClient() as client:
         hotel_key = f"hotel_{hotel_id}"
